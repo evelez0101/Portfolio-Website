@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Download, Mail, Github, ExternalLink, Linkedin, Menu, X } from "lucide-react"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { Download, Mail, Github, ExternalLink, Linkedin, Menu, X } from "lucide-react";
 
 export default function Page() {
   const [activeSection, setActiveSection] = useState(0)
@@ -29,8 +30,18 @@ export default function Page() {
       title: "Foreclosure Finder",
       description: "Collaborative task management tool with real-time updates and team features",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-10-30%20at%202.08.38%E2%80%AFPM-pSKasbDDkkaACKWPATQDBkbaCeQUOw.png",
+        "/projects/foreclosure-finder.png",
       technologies: ["Next.js", "Flask", "Supabase", "Docker", "AWS"],
+      category: "Full Stack",
+      codeUrl: "#",
+      demoUrl: "#",
+    },
+    {
+      title: "MinMax TicTacToe",
+      description: "Collaborative task management tool with real-time updates and team features",
+      image:
+        "placeholder-user.jpg",
+      technologies: ["Python", "Flask", "Docker", "AWS"],
       category: "Full Stack",
       codeUrl: "#",
       demoUrl: "#",
@@ -39,7 +50,7 @@ export default function Page() {
       title: "PyTorrent",
       description: "An Open Sourse Python Cli and Python Bit Torrent Client",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-10-30%20at%202.08.38%E2%80%AFPM-pSKasbDDkkaACKWPATQDBkbaCeQUOw.png",
+        "placeholder-user.jpg",
       technologies: ["Python", "TKinter", "Docker", "Linux"],
       category: "Backend",
       codeUrl: "#",
@@ -117,10 +128,18 @@ export default function Page() {
   const filteredProjects =
     activeFilter === "All Projects" ? projects : projects.filter((project) => project.category === activeFilter)
 
+  const handleDownload = () => {
+    window.open('https://drive.google.com/file/d/1-SvvcZu5RrmvlB0nP_vqy1b60tR3AWN-/view?usp=sharing', '_blank');
+  };
+
+  const handleEmail = () => {
+    window.location.href = "mailto:egv2113@columbia.edu";
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Darkened animated gradient background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-purple-950 animate-gradient-shift -z-10" />
+      <div className="fixed inset-0 bg-linear-to-br from-purple-900 via-blue-900 to-purple-950 animate-gradient-shift -z-10" />
 
       {/* Reduced opacity of floating orbs */}
       <div className="fixed inset-0 overflow-hidden -z-10">
@@ -223,7 +242,7 @@ export default function Page() {
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light font-sans">
-                CS Student | Backend Engineer
+                CS Student | Peer Tutor | Backend Engineer
               </p>
 
               <p className="text-base sm:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed font-sans">
@@ -232,11 +251,11 @@ export default function Page() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center pt-4">
-                <button className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/30 transition-all duration-300 backdrop-blur-sm font-medium hover:shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_30px_rgba(147,51,234,0.3)] hover:scale-105 text-sm sm:text-base">
+                <button onClick = {handleDownload} className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/30 transition-all duration-300 backdrop-blur-sm font-medium hover:shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_30px_rgba(147,51,234,0.3)] hover:scale-105 text-sm sm:text-base">
                   <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                   Download My Resume
                 </button>
-                <button className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/30 transition-all duration-300 backdrop-blur-sm font-medium hover:shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_30px_rgba(147,51,234,0.3)] hover:scale-105 text-sm sm:text-base">
+                <button onClick = {handleEmail} className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/30 transition-all duration-300 backdrop-blur-sm font-medium hover:shadow-[0_0_20px_rgba(255,255,255,0.4),0_0_30px_rgba(147,51,234,0.3)] hover:scale-105 text-sm sm:text-base">
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                   Contact Me
                 </button>
@@ -255,10 +274,10 @@ export default function Page() {
         <div className="max-w-4xl mx-auto w-full">
           <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl p-6 sm:p-8 md:p-16 shadow-2xl hover:shadow-[0_0_30px_rgba(255,255,255,0.2),0_0_60px_rgba(147,51,234,0.3)] transition-all duration-500">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 md:mb-20 gap-2">
-              <h2 className="font-bold text-white font-display font-mono text-3xl sm:text-4xl md:text-5xl">
+              <h2 className="font-bold text-white font-sans text-3xl sm:text-4xl md:text-5xl">
                 Experience
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-white/50 font-mono font-sans">2021 — 2025</p>
+              <p className="text-sm sm:text-base md:text-lg text-white/50 font-sans">2021 — 2025</p>
             </div>
 
             {/* Experience Timeline */}
@@ -266,15 +285,15 @@ export default function Page() {
               {/* Experience 1 */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
                 <div className="md:col-span-2">
-                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-mono">2025</p>
+                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-sans">2025</p>
                 </div>
                 <div className="md:col-span-7 space-y-2 md:space-y-3">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-display font-mono">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-sans">
                     Contract Software Engineer
                   </h3>
                   <p className="text-base sm:text-lg text-white/60 font-sans">Peak Real Estate</p>
                   <p className="text-sm sm:text-base text-white/50 leading-relaxed pt-2 font-sans">
-                    Built performant interfaces for project management and team collaboration.
+                    Built an automated data foreclosure data pipeline, created an interactive web app for each information retrival.
                   </p>
                 </div>
                 <div className="md:col-span-3 flex flex-wrap gap-2 items-start justify-start md:justify-end content-start">
@@ -295,10 +314,10 @@ export default function Page() {
               {/* Experience 2 */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
                 <div className="md:col-span-2">
-                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-mono">2025</p>
+                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-sans">2025</p>
                 </div>
                 <div className="md:col-span-7 space-y-2 md:space-y-3">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-display font-mono">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-sans">
                     Software Engineer Program Intern
                   </h3>
                   <p className="text-base sm:text-lg text-white/60 font-sans">JPMorgan Chase</p>
@@ -324,10 +343,10 @@ export default function Page() {
               {/* Experience 3 */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
                 <div className="md:col-span-2">
-                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-mono">2024</p>
+                  <p className="text-white/50 text-2xl sm:text-2xl md:text-3xl font-medium font-sans">2024</p>
                 </div>
                 <div className="md:col-span-7 space-y-2 md:space-y-3">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-display">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-sans">
                     AHL Fellowship Program - Software Engineering Track
                   </h3>
                   <p className="text-base sm:text-lg text-white/60 font-sans">JPMorgan Chase</p>
@@ -360,7 +379,7 @@ export default function Page() {
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl p-6 sm:p-8 md:p-16 shadow-2xl hover:shadow-[0_0_30px_rgba(255,255,255,0.2),0_0_60px_rgba(147,51,234,0.3)] transition-all duration-500">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-center mb-8 md:mb-12 font-display font-mono">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-center mb-8 md:mb-12 font-sans">
               Featured Projects
             </h2>
 
@@ -369,7 +388,7 @@ export default function Page() {
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 font-mono backdrop-blur-xl border ${
+                  className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 font-sans backdrop-blur-xl border ${
                     activeFilter === filter
                       ? "bg-white text-purple-900 shadow-[0_0_20px_rgba(255,255,255,0.5)] border-white"
                       : "bg-white/10 text-white border-white/30 hover:border-white/60 hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.3),0_0_25px_rgba(147,51,234,0.2)]"
@@ -388,14 +407,19 @@ export default function Page() {
                   className="backdrop-blur-xl bg-white/5 rounded-2xl overflow-hidden border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 group shadow-xl hover:shadow-[0_0_25px_rgba(255,255,255,0.3),0_0_50px_rgba(147,51,234,0.4)] hover:scale-[1.02]"
                 >
                   {/* Project Image */}
-                  <div className="aspect-video bg-white/5 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                      <p className="text-white/40 text-xs sm:text-sm font-medium">Project Screenshot</p>
+                  <div className="aspect-video bg-white/5 overflow-hidden rounded-xl">
+                    <div className="relative w-full h-full bg-linear-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
+                      <Image
+                        src={project.image}
+                        alt="Project Screenshot"
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                   </div>
 
                   <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-display font-mono">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white font-sans">
                       {project.title}
                     </h3>
                     <p className="text-sm sm:text-base text-white/70 leading-relaxed font-sans">
@@ -449,7 +473,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
               {/* Left Column - Main Content */}
               <div className="space-y-6 md:space-y-8">
-                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white font-display font-mono">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white font-sans">
                   Let's Connect
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed font-sans">
@@ -458,7 +482,7 @@ export default function Page() {
                 </p>
                 <a
                   href="mailto:egv2113@columbia.edu"
-                  className="inline-flex items-center gap-2 md:gap-3 text-lg sm:text-xl md:text-2xl text-white hover:text-white/80 transition-colors group font-medium font-mono break-all"
+                  className="inline-flex items-center gap-2 md:gap-3 text-lg sm:text-xl md:text-2xl text-white hover:text-white/80 transition-colors group font-medium font-sans break-all"
                 >
                   egv2113@columbia.edu
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -476,29 +500,29 @@ export default function Page() {
                     href="https://github.com/evelez0101"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-4 sm:p-6 backdrop-blur-xl bg-white/5 rounded-2xl border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 group shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.3),0_0_40px_rgba(147,51,234,0.3)] hover:scale-105"
+                    className="p-4 sm:p-6 backdrop-blur-xl bg-white/5 rounded-2xl border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 group shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.3),0_0_40px_rgba(147,51,234,0.3)] hover:scale-105 font-sans"
                   >
                     <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                       <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                      <h3 className="text-lg sm:text-xl font-semibold text-white font-display font-mono">GitHub</h3>
+                      <h3 className="text-lg sm:text-xl font-semibold text-white font-sans">GitHub</h3>
                     </div>
-                    <p className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors font-medium font-mono">
+                    <p className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors font-medium font-sans">
                       @evelez0101
                     </p>
                   </a>
 
                   {/* LinkedIn Card */}
                   <a
-                    href="https://linkedin.com/in/evelez0101"
+                    href="https://www.linkedin.com/in/evelio-v-218147290/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-4 sm:p-6 backdrop-blur-xl bg-white/5 rounded-2xl border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 group shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.3),0_0_40px_rgba(147,51,234,0.3)] hover:scale-105"
                   >
                     <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                       <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                      <h3 className="text-lg sm:text-xl font-semibold text-white font-display font-mono">LinkedIn</h3>
+                      <h3 className="text-lg sm:text-xl font-semibold text-white font-sans">LinkedIn</h3>
                     </div>
-                    <p className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors font-medium font-mono">
+                    <p className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors font-medium font-sans">
                       @evelez0101
                     </p>
                   </a>
